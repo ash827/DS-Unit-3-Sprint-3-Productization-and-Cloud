@@ -4,7 +4,7 @@ import pandas as pd
 import datetime
 from flask import Flask, request, render_template
 from .models import *
-from .functions import *
+from .function import *
 
 
 #instantiate an API object
