@@ -22,9 +22,8 @@ def create_app():
     @app.route('/')
     def root():
         message = ''
-        rec_10 = Record.query.filter(Record.value = 10).all()
-        rec_over_10 = Record.query.filter(Record.id > 10).all()
-        return render_template('base.html', message=message, rec_10=rec_10, rec_over_10=rec_over_10)
+        rec_10 = Record.query.filter(Record.value >= 10).all()
+        return render_template('base.html', message=message, rec_10=rec_10)
 
     @app.route('/refresh')
     def refresh():
@@ -36,9 +35,8 @@ def create_app():
         create_DB_records(db_measure)
         DB.session.commit()
         message = 'Data refreshed on: ' + str(datetime.datetime.now())
-        rec_10 = Record.query.filter(Record.value = 10).all()
-        rec_over_10 = Record.query.filter(Record.id > 10).all()
-        return render_template('base.html', message=message, rec_10=rec_10, rec_over_10=rec_over_10)
+        rec_10 = Record.query.filter(Record.value >= 10).all()
+        return render_template('base.html', message=message, rec_10=rec_10)
 
     @app.route('/resetDB')
     def resetDB():
