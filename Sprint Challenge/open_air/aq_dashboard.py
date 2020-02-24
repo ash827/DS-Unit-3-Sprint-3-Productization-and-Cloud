@@ -3,8 +3,6 @@ import openaq
 import pandas as pd
 import datetime
 from flask import Flask, request, render_template
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from .models import *
 from .function import *
 
@@ -26,6 +24,13 @@ def create_app():
         message = ''
         rec_10 = Record.query.filter(Record.value >= 10).all()
         return render_template('homepage.html', message=message, rec_10=rec_10)
+    
+    def create_DB_records(DB):
+        """Pull Los Angeles data from OpenAq & create db records"""
+    for index, row in DB.iterrows():
+        rec = Record(datetime=row['date.utc'], value=row['value'])
+        DB.session.add(rec)
+        DB.session.commit()
 
     @app.route('/refresh')
     def refresh():
