@@ -23,7 +23,7 @@ def create_app():
     def root():
         message = ''
         rec_10 = Record.query.filter(Record.value >= 10).all()
-        return render_template('base.html', message=message, rec_10=rec_10)
+        return render_template('homepage.html', message=message, rec_10=rec_10)
 
     @app.route('/refresh')
     def refresh():
@@ -36,13 +36,13 @@ def create_app():
         DB.session.commit()
         message = 'Data refreshed on: ' + str(datetime.datetime.now())
         rec_10 = Record.query.filter(Record.value >= 10).all()
-        return render_template('base.html', message=message, rec_10=rec_10)
+        return render_template('homepage.html', message=message, rec_10=rec_10)
 
     @app.route('/resetDB')
     def resetDB():
         DB.drop_all()
         DB.create_all()
         message = 'DB emptied!'
-        return render_template('base.html', message=message)
+        return render_template('homepage.html', message=message)
 
     return app
