@@ -1,5 +1,5 @@
 #Creating models.py as shown in lecture, to call class Record as defined below.
-
+from flask import flask_sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
 
 DB = SQLAlchemy()
