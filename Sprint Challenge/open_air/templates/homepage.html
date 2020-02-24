@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>OpenAQ</title>
+</head>
+<body>
+    <h1>Los Angeles Air Quality</h1>
+    
+    <p>Readings greater than or equal to 10 (PM2.5) (Potentially Risky)</p>
+    <ul>
+        {% for rec in rec_10 %}
+        <li>{{rec.datetime}} - {{rec.value}}</li>
+        {% endfor %}
+    </ul>
+
+    <p>{{ message }}</p>
+
+    {% endblock %}
+
+</body>
+</html>
