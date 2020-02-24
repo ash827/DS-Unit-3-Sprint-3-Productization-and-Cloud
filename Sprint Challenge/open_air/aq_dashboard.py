@@ -3,6 +3,8 @@ import openaq
 import pandas as pd
 import datetime
 from flask import Flask, request, render_template
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from .models import *
 from .function import *
 
