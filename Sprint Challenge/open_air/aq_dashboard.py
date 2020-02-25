@@ -1,6 +1,6 @@
 """ Main application and routing logic for aq_dashboard """
 import openaq
-import pandas as pd
+#import pandas as pd
 import datetime
 from flask import Flask, request, render_template
 from .models import *
@@ -8,7 +8,7 @@ from .function import *
 
 
 #instantiate an API object
-open_api = openaq.OpenAQ() 
+open_api = openaq.OpenAQ()
 
 def create_app():
     """create + config Flask app obj"""
@@ -18,6 +18,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///openaq.db' 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     DB.init_app(app)
+
 
     @app.route('/')
     def root():
