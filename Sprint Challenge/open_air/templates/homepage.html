@@ -9,7 +9,7 @@
 <body>
     <h1>Los Angeles Air Quality</h1>
     
-    <p>Readings greater than or equal to 10 (PM2.5) (Potentially Risky)</p>
+    <p>Readings greater than or equal to 10 (PM2.5)</p>
     <ul>
         {% for rec in rec_10 %}
         <li>{{rec.datetime}} - {{rec.value}}</li>
